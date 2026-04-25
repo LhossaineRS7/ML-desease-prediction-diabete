@@ -1,0 +1,13 @@
+# Ignore the virtual environment
+venv/
+env/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore the raw data to show you understand data privacy
+diabetes.csv
+ML_diabetes.ipynb
+
+*.csv
+__pycache__/
