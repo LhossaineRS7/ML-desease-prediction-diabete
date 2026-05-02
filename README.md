@@ -57,6 +57,11 @@ The `liver_prediction.py` script performs the following steps:
    ```bash
    pip install -r requirements.txt
    ```
+**Note on GUI Backend:** The script will attempt to display the plot automatically. If you see a `ModuleNotFoundError: No module named 'tkinter'`, you need to install Python's GUI toolkit. On Debian/Ubuntu, you can do this with:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install python3-tk
+   ```
 
 ## Usage
 
@@ -64,7 +69,7 @@ The `liver_prediction.py` script performs the following steps:
    ```bash
    python liver_prediction.py
    ```
-2. **The script will output the prediction results, and a ROC curve image `liver_roc_curve.png` will be generated.**
+2. **The script will output the prediction results, save a ROC curve image `liver_roc_curve.png`, and display the plot in a new window.**
 
 ## Contributing
 
