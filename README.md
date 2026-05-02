@@ -1,63 +1,71 @@
-# Early Disease Prediction System 🏥
+# Disease Prediction System
 
-## Objective
-An end-to-end machine learning pipeline designed to predict the risk of diabetes using the Pima Indians dataset. This project demonstrates robust data engineering practices, including missing value imputation, feature scaling, and comparative model evaluation.
+This project is a disease prediction system that uses machine learning to predict the likelihood of a patient having a certain disease. Currently, the system is focused on predicting liver disease.
 
-## Architecture & Tech Stack
-* **Data Engineering:** Pandas, Scikit-learn (SimpleImputer, StandardScaler)
-* **Baseline Model:** Logistic Regression
-* **Deep Learning Model:** Multi-Layer Perceptron (MLP) built with TensorFlow/Keras
-* **Environment:** Python 3, Linux 
+## Project Overview
 
-## Key Results
-* Successfully handled biologically impossible hidden missing values (0s) via median imputation.
-* Designed a custom neural network architecture optimized for tabular healthcare data.
-* Evaluated models emphasizing **Recall** to minimize dangerous False Negatives in a medical context.
+This project aims to provide a tool for predicting liver disease in patients based on various medical attributes. It utilizes a machine learning model trained on a dataset of patient information. The primary goal is to create a system that can assist healthcare professionals in making faster and more accurate diagnoses.
 
----
+The project is built using the following technologies:
+- **Python:** The core programming language used for the project.
+- **Pandas:** Used for data manipulation and analysis.
+- **NumPy:** Used for numerical operations.
+- **Scikit-learn:** Used for building and evaluating the machine learning model.
+- **TensorFlow:** Used for creating the neural network model.
+- **Matplotlib:** Used for generating visualizations, such as the ROC curve.
 
-## How to Run This Project
+## How it Works
 
-Follow these steps to set up and run the project on your local machine.
+The `liver_prediction.py` script performs the following steps:
 
-**1. Clone the Repository**
+1.  **Data Loading and Preprocessing:**
+    *   Loads the patient data from the `indian_liver_patient.csv` file.
+    *   Cleans the data by converting categorical features (like 'Gender') into numerical format.
+    *   Handles any missing values in the dataset using median imputation.
+    *   Splits the data into training and testing sets.
+    *   Scales the features using `StandardScaler` to ensure all features have a similar range, which is crucial for neural networks.
 
-First, download the project from GitHub. Replace `your-username/your-repo-name` with the actual GitHub repository URL.
+2.  **Model Training:**
+    *   **Baseline Model:** A Logistic Regression model is trained on the scaled training data to serve as a performance baseline.
+    *   **Neural Network:** A deep learning model is built using TensorFlow/Keras. It consists of several dense layers with ReLU activation and a final sigmoid activation layer for binary classification. The model is then trained on the same data.
 
-```sh
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
+3.  **Evaluation and Visualization:**
+    *   Both models are evaluated on the test set, and their performance is measured using metrics like accuracy, precision, and recall.
+    *   An ROC (Receiver Operating Characteristic) curve is generated to visually compare the performance of the Logistic Regression model and the Neural Network.
+    *   The resulting ROC curve plot is saved as `liver_roc_curve.png`.
 
-**2. Create a Virtual Environment (Recommended)**
+## Installation
 
-It's a good practice to create a separate "virtual environment" for the project. This keeps its libraries isolated from other Python projects.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/disease-prediction-system.git
+   ```
+2. **Create a virtual environment:**
+   ```bash
+   python -m venv venv
+   ```
+3. **Activate the virtual environment:**
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On macOS and Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+4. **Install the required packages:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```sh
-# Create the environment
-python -m venv venv
+## Usage
 
-# Activate it
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-```
+1. **Run the liver prediction script:**
+   ```bash
+   python liver_prediction.py
+   ```
+2. **The script will output the prediction results, and a ROC curve image `liver_roc_curve.png` will be generated.**
 
-**3. Install the Required Libraries**
+## Contributing
 
-Use `pip` to install all the libraries listed in the `requirements.txt` file with a single command:
-
-```sh
-pip install -r requirements.txt
-```
-
-**4. Run the Script**
-
-Now you can run the machine learning script:
-
-```sh
-python ML_diabetes.py
-```
-
-You will see the model's performance printed in the terminal, and a file named `roc_curve.png` will be created in the project folder with the resulting graph.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

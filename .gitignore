@@ -11,3 +11,5 @@ ML_diabetes.ipynb
 
 *.csv
 __pycache__/
+ML_diabetes.py
+ML_diabetes.ipynb
